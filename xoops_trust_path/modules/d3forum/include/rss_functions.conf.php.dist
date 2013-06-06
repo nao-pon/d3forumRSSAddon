@@ -1,0 +1,10 @@
+<?php
+	// Show title of hidden articles.
+	$show_hidden_topic = TRUE;
+	
+	// Show dummy title of hidden articles.
+	// $show_hidden_topic = '(Title Hidden)';
+	
+	// Hide title of hidden articles.
+	// $show_hidden_topic = FALSE;
+?>
