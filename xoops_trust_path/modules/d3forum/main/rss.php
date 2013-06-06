@@ -43,7 +43,12 @@ if ($e === 'sjis') {
 	$encode = $encoding = 'UTF-8';
 }
 
-$c_file = XOOPS_ROOT_PATH . '/cache/' . $mydirname . '_' . $cat . '_' . $forum . '.rss';
+if (defined('XOOPS_CACHE_PATH')) {
+	$c_file = XOOPS_CACHE_PATH . '/' . rawurlencode(substr(XOOPS_URL, 7)) . '_' . $mydirname . '_' . $cat . '_' . $forum . '.rss';
+} else {
+	$ssl = (defined('XOOPS_IS_SSL') && XOOPS_IS_SSL)? '_ssl' : '';
+	$c_file = XOOPS_ROOT_PATH . '/cache/' . $mydirname . '_' . $cat . '_' . $forum . $ssl . '.rss';
+}
 
 if (file_exists($c_file) && (filemtime($c_file) + $cache_min * 60) > time()) {
 	$data = unserialize(join('',file($c_file)));
